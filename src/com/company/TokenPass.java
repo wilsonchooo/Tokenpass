@@ -7,6 +7,7 @@ public class TokenPass {
     private int currentPlayer;
     private int [] board;
     public TokenPass(int playerCount) {
+
          board = new int[playerCount];
         for (int i = 0; i < playerCount; i++) {
             board[i] = 1 + (int) (10 * Math.random());
@@ -21,9 +22,10 @@ public class TokenPass {
             board[currentPlayer] = 0;
 
             while (numToDistribute > 0) {
-                nextPlayer = currentPlayer;
-                numToDistribute = board[currentPlayer];
+                nextPlayer = next(nextPlayer)+1 % board.length;
+                board[nextPlayer]++;
                 numToDistribute--;
+
                 if (board[currentPlayer] == 0)
                 {
                     System.out.println(currentPlayer + "is the winner");
@@ -36,7 +38,7 @@ public class TokenPass {
             return -1;
         }
 
-        public void nextPlayer()
+        public void next(int next)
         {
             System.out.println(currentPlayer);
 
