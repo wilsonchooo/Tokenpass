@@ -6,8 +6,10 @@ public class TokenPass {
 
     private int currentPlayer;
     private int [] board;
+    private  int counter;
     public TokenPass(int playerCount) {
 
+         counter = 0;
          board = new int[playerCount];
         for (int i = 0; i < playerCount; i++) {
             board[i] = 1 + (int) (10 * Math.random());
@@ -30,6 +32,14 @@ public class TokenPass {
                 }
                 board[nextPlayer]++;
                 numToDistribute--;
+                counter++;
+
+                if (counter == 20)
+                {
+                    System.out.println("It was a tie");
+                    System.exit(0);
+
+                }
             }
 
 
@@ -46,7 +56,7 @@ public class TokenPass {
 
         }
 
-        public void gameOver ()
+        public int gameOver ()
         {
             for (int x=0;x<board.length;x++)
             {
@@ -55,14 +65,14 @@ public class TokenPass {
                     int winner = x;
                     System.out.println(winner + "is the winner");
                     System.exit(0);
-                   // return 1;
+                    return 1;
 
 
                 }
-               // else return -1;
+                else return -1;
             }
 
-            // return -1;
+             return -1;
         }
 
         public int next( )

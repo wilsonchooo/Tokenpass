@@ -7,7 +7,7 @@ public class Main {
         TokenPass game1= new TokenPass(6);
 
 
-       while(true)
+       while(game1.gameOver()<0)
         {
             game1.printBoard();
             game1.distributeCurrentPlayerTokens();
